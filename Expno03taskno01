@@ -1,144 +1,52 @@
+/* Aim :WAp to design a menu driver calculator using switch and goto.
+   Name : Ansari Mohammad Muzammil Nisar Ahmad     Roll No: 29
+   Division : A        UIN : 241A035   Branch : AIDS
+*/
 #include<stdio.h>
 
 int main()
 {
-float num1,num2,result;
-int mod_result;
-char operator;
+    float num1, num2, result;
+    char op, choice;
 
-printf("\t\t\t**Calculator**\n\n\n");
-printf("\t\t\t  Operations :\n");
-printf("\t\t '+' : Addition\n");
-printf("\t\t '-' : Subtraction\n");
-printf("\t\t '/' : Division\n");
-printf("\t\t '*' : Multiplication ");
-printf("\t\t '%' : Modulus\n\n");
+    start: // Label for goto
+    printf("\n----- Calculator Menu -----\n");
+    printf("Enter Num1: ");
+    scanf("%f", &num1);
+    printf("Enter the operation (+, -, *, /): ");
+    scanf(" %c", &op); // Space before %c to ignore newline character
+    printf("Enter Num2: ");
+    scanf("%f", &num2);
 
-
-repeat:
-
-printf("Enter The First Operand:");
-scanf("%f",num1);
-printf("Enter The Second Operand:");
-scanf("%f",num2);
-printf("Enter The Opretion :");
-scanf(" %c",operator);
-
-switch(operator)
-{
-    case '+':
-        result=num1+num2;
-        printf("%.1f+%.1f=%1f",num1,num2,result);
-        break;
-
-    case '-':
-        result=num1-num2;
-        printf("%.1f-%.1f=%1f",num1,num2,result);
-        break;
-
-    case '*':
-    result=num1*num2;
-    printf("%.1f*%.1f=%1f",num1,num2,result);
-    break;
-
-    case '/':
-        if(num2==0){
-            printf("cannot divided by zero");
+    switch(op) {
+        case '+':
+            result = num1 + num2;
+            printf("Result: %.2f\n", result);
             break;
-        }
-        result=num1/num2;
-        printf("%.1f/%.1f=%.1f",num1,num2,result);
-
-    case '%':
-    mod_result=(int)num1%(int)num2;
-    printf("%.1f%%%.1f=%1f",num1,num2,result);
-    break;
-
-    default:
-        printf("Enter Opration Is Invalide");
-
-}
-printf("\nContinue?(Y/N):");
-scanf(" %c",&operator);
-if(operator =='N'||operator =='n'){
-    printf("Thank you for using Calculator");
-    return 0;
-}
-
-printf("\n\n");
-goto repeat;
-
-return 0;
-}
-#include<stdio.h>
-
-int main()
-{
-float num1,num2,result;
-int mod_result;
-char operator;
-
-printf("\t\t\t**Calculator**\n\n\n");
-printf("\t\t\t  Operations :\n");
-printf("\t\t '+' : Addition\n");
-printf("\t\t '-' : Subtraction\n");
-printf("\t\t '/' : Division\n");
-printf("\t\t '*' : Multiplication ");
-printf("\t\t '%' : Modulus\n\n");
-
-
-repeat:
-
-printf("Enter The First Operand:");
-scanf("%f",num1);
-printf("Enter The Second Operand:");
-scanf("%f",num2);
-printf("Enter The Opretion :");
-scanf(" %c",operator);
-
-switch(operator)
-{
-    case '+':
-        result=num1+num2;
-        printf("%.1f+%.1f=%1f",num1,num2,result);
-        break;
-
-    case '-':
-        result=num1-num2;
-        printf("%.1f-%.1f=%1f",num1,num2,result);
-        break;
-
-    case '*':
-    result=num1*num2;
-    printf("%.1f*%.1f=%1f",num1,num2,result);
-    break;
-
-    case '/':
-        if(num2==0){
-            printf("cannot divided by zero");
+        case '-':
+            result = num1 - num2;
+            printf("Result: %.2f\n", result);
             break;
-        }
-        result=num1/num2;
-        printf("%.1f/%.1f=%.1f",num1,num2,result);
-
-    case '%':
-    mod_result=(int)num1%(int)num2;
-    printf("%.1f%%%.1f=%1f",num1,num2,result);
-    break;
-
-    default:
-        printf("Enter Opration Is Invalide");
-
-}
-printf("\nContinue?(Y/N):");
-scanf(" %c",&operator);
-if(operator =='N'||operator =='n'){
-    printf("Thank you for using Calculator");
+        case '*':
+            result = num1 * num2;
+            printf("Result: %.2f\n", result);
+            break;
+        case '/':
+            if (num2 != 0) {
+                result = num1 / num2;
+                printf("Result: %.2f\n", result);
+            } else {
+                printf("Error: Division by zero is not allowed.\n");
+            }
+            break;
+        default:
+            printf("Error: Invalid operation.\n");
+    }
+    printf("\nDo you want to perform another calculation? (y/n): ");
+    scanf(" %c", &choice);
+    if (choice == 'y' || choice == 'Y') {
+        goto start; // Jump to the start label
+    }
+    printf("Thank you for using the calculator!\n");
     return 0;
-}
-
-printf("\n\n");
-goto repeat;
-
-return 0;
 }
